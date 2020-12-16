@@ -62,5 +62,12 @@ class MainActivity : AppCompatActivity() {
     private fun moveNext() {
         ++notePosition
         displayNote()
+        invalidateOptionsMenu()
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+
+
+        return super.onPrepareOptionsMenu(menu)
     }
 }
