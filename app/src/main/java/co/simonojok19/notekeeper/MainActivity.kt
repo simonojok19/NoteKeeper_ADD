@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         val note = DataManager.notes[notePosition]
         textNoteTitle.setText(note.title)
         textNoteText.setText(note.text)
+
+        val coursePosition = DataManager.courses.values.indexOf(note.course)
+        spinnerCourses.setSelection(coursePosition)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
