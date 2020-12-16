@@ -23,5 +23,11 @@ class NoteListActivity : AppCompatActivity() {
         list_notes.adapter = ArrayAdapter(this,
         android.R.layout.simple_list_item_1,
         DataManager.notes)
+
+        list_notes.setOnItemClickListener { _, _, position, _ ->
+            val activityIntent = Intent(this, MainActivity::class.java)
+            activityIntent.putExtra("EXTRA_NOTE_POSITION", position)
+            startActivity(activityIntent)
+        }
     }
 }
