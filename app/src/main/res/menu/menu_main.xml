@@ -4,6 +4,7 @@
     tools:context="co.simonojok19.notekeeper.MainActivity">
     <item
         android:id="@+id/action_next"
+        android:icon="@drawable/ic_baseline_forward_24"
         android:orderInCategory="100"
         android:title="Next"
         app:showAsAction="ifRoom" />
