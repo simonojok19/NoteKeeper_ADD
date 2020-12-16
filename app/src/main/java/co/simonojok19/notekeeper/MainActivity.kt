@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         spinnerCourses.adapter = adapterCourses
 
+        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOTE_SET)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
