@@ -7,9 +7,7 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.content_note_list.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         spinnerCourses.adapter = adapterCourses
 
-        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOTE_SET)
+        notePosition = savedInstanceState?.getInt(NOTE_POSITION, POSITION_NOTE_SET) ?:
+            intent.getIntExtra(NOTE_POSITION, POSITION_NOTE_SET)
         if(notePosition != POSITION_NOTE_SET) {
             displayNote()
         } else {
@@ -92,5 +91,10 @@ class MainActivity : AppCompatActivity() {
         note.title = textNoteTitle.text.toString()
         note.text = textNoteText.text.toString()
         note.course = spinnerCourses.selectedItem as CourseInfo
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(NOTE_POSITION, notePosition)
     }
 }
