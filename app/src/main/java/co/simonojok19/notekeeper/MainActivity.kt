@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOTE_SET)
         if(notePosition != POSITION_NOTE_SET) {
             displayNote()
+        } else {
+            DataManager.notes.add(NoteInfo())
+            notePosition = DataManager.notes.lastIndex
         }
 
     }
