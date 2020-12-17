@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.content_note_list.*
 
 
 class MainActivity : AppCompatActivity() {
