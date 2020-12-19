@@ -29,10 +29,14 @@ class MainActivity : AppCompatActivity() {
         if(notePosition != POSITION_NOTE_SET) {
             displayNote()
         } else {
-            DataManager.notes.add(NoteInfo())
-            notePosition = DataManager.notes.lastIndex
+            createNewNote()
         }
 
+    }
+
+    private fun createNewNote() {
+        DataManager.notes.add(NoteInfo())
+        notePosition = DataManager.notes.lastIndex
     }
 
     private fun displayNote() {
