@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -56,11 +57,21 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> true
             R.id.action_next -> {
-                moveNext()
+                if(notePosition < DataManager.notes.lastIndex){
+                    moveNext()
+                } else {
+                    val message = "No more notes"
+                    showMessage(message)
+                }
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showMessage(message: String) {
+        Snackbar.make(textNoteText, message, Snackbar.LENGTH_LONG).show()
     }
 
     private fun moveNext() {
