@@ -48,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         textNoteTitle.setText(note.title)
         textNoteText.setText(note.text)
 
+        Log.i(TAG, "Displaying note for position $notePosition")
+
         val coursePosition = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(coursePosition)
     }
@@ -103,6 +105,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         saveNote()
+        Log.d(TAG, "onPause")
     }
 
     private fun saveNote() {
