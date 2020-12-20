@@ -23,7 +23,5 @@ class DataManagerTest {
         assertEquals(course, note.course)
         assertEquals(noteText, note.text)
         assertEquals(noteTitle, note.title)
-
-
     }
 }
