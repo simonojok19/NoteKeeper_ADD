@@ -5,8 +5,12 @@ import org.junit.Assert
 
 class DataManagerTestCase : TestCase() {
 
+
     public override fun setUp() {
         super.setUp()
+        DataManager.notes.clear()
+        DataManager.initializeCourses()
+        DataManager.initializeNotes();
     }
 
     public override fun tearDown() {}
