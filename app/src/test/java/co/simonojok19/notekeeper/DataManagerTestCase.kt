@@ -31,4 +31,6 @@ class DataManagerTestCase : TestCase() {
         Assert.assertEquals(noteText, note.text)
         Assert.assertEquals(noteTitle, note.title)
     }
+
+
 }
