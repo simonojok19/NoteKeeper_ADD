@@ -1,5 +1,8 @@
 package co.simonojok19.notekeeper
 
+import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
@@ -17,6 +20,16 @@ class CreateNewNoteTest {
 
     @Test
     fun createNewNote() {
+        // Prepare
+        val noteTitle = "Test note title"
+        val noteText = "This is the body of our test note"
+
+        // Act
+        val fab = onView(withId(R.id.fab))
+        fab.perform(click())
+
+        // Assert
+
 
     }
 }
