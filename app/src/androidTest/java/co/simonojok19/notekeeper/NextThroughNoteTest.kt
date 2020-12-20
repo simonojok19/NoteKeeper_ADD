@@ -29,6 +29,7 @@ class NextThroughNoteTest {
         for (index in 0..DataManager.notes.lastIndex) {
             val note = DataManager.notes[index]
 
+            // Assert
             onView(withId(R.id.spinnerCourses))
                 .check(matches(withSpinnerText(note.course?.title)))
 
@@ -37,8 +38,16 @@ class NextThroughNoteTest {
 
             onView(withId(R.id.textNoteText))
                 .check(matches(withText(note.text)))
+
+            if(index != DataManager.notes.lastIndex) {
+                onView(allOf(withId(R.id.action_next), isEnabled()))
+                    .perform(click())
+            }
+
         }
 
         // Assert
+        onView(withId(R.id.action_next))
+            .check(matches(not(isEnabled())))
     }
 }
