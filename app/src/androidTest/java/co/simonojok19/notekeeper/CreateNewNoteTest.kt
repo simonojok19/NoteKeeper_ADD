@@ -25,8 +25,14 @@ class CreateNewNoteTest {
         val noteText = "This is the body of our test note"
 
         // Act
-        val fab = onView(withId(R.id.fab))
-        fab.perform(click())
+        val fabViewInteraction = onView(withId(R.id.fab))
+        fabViewInteraction.perform(click())
+
+        val noteTitleViewInteraction = onView(withId(R.id.textNoteTitle))
+        noteTitleViewInteraction.perform(typeText(noteTitle))
+
+        val noteTextViewInteraction = onView(withId(R.id.textNoteText))
+        noteTextViewInteraction.perform(typeText(noteText))
 
         // Assert
 
