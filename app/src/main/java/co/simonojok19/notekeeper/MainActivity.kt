@@ -1,6 +1,7 @@
 package co.simonojok19.notekeeper
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = "MainActivity"
     private var notePosition = POSITION_NOTE_SET
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             createNewNote()
         }
+
+        Log.d(TAG, "onCreate")
 
     }
 
