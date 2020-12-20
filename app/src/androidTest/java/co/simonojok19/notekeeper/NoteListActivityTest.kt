@@ -61,7 +61,7 @@ class NoteListActivityTest {
         val appCompatCheckedTextView = onData(anything())
             .inAdapterView(
                 childAtPosition(
-                    withClassName(`is`("android.widget.PopupWindow$PopupBackgroundView")),
+                    withClassName(`is`("android.widget.PopupWindow")),
                     0
                 )
             )
