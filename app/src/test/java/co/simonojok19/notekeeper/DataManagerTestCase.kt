@@ -3,7 +3,7 @@ package co.simonojok19.notekeeper
 import junit.framework.TestCase
 import org.junit.Assert
 
-class DataManagerTest3 : TestCase() {
+class DataManagerTestCase : TestCase() {
 
     public override fun setUp() {
         super.setUp()
