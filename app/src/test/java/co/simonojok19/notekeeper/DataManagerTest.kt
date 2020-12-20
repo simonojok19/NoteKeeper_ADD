@@ -3,9 +3,16 @@ package co.simonojok19.notekeeper
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
 
 
 class DataManagerTest {
+    @Before
+    fun setUp() {
+        DataManager.notes.clear()
+        DataManager.initializeCourses()
+        DataManager.initializeNotes();
+    }
 
     @Test
     fun testAddNote() {
