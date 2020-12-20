@@ -48,11 +48,7 @@ class CreateNewNoteTest {
 
         Espresso.closeSoftKeyboard()
 
-
-
         Espresso.pressBack()
-
-
 
         // Assert
         val newNote = DataManager.notes.last()
