@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             createNewNote()
         }
 
+
         Log.d(TAG, "onCreate")
 
     }
