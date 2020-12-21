@@ -3,8 +3,10 @@ package co.simonojok19.notekeeper
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.content_note_list.*
 
 class NoteListActivity : AppCompatActivity() {
@@ -19,7 +21,7 @@ class NoteListActivity : AppCompatActivity() {
             startActivity(activityIntent)
         }
 
-
+        list_items.layoutManager = LinearLayoutManager(this)
 
 
     }
