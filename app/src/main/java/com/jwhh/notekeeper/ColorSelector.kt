@@ -6,26 +6,11 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import java.util.jar.Attributes
 
-class ColorSelector: LinearLayout {
+class ColorSelector constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int = 0, defRes: Int = 0):
+        LinearLayout(context, attributeSet, defStyle, defRes) {
 
-    constructor(context: Context)
-            : super(context) {
+    init {
         orientation = HORIZONTAL
     }
-
-    constructor(context: Context, attributeSet: AttributeSet)
-            : super(context, attributeSet) {
-        orientation = HORIZONTAL
-    }
-
-    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
-            : super(context, attributeSet, defStyleAttr){
-        orientation = HORIZONTAL
-    }
-
-    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int, defStyleRes: Int)
-        :super(context, attributeSet, defStyleAttr, defStyleRes) {
-            orientation = HORIZONTAL
-        }
 
 }
