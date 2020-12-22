@@ -4,8 +4,10 @@ import android.content.Context
 import android.graphics.Color
 import android.support.annotation.StyleableRes
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.LinearLayout
-import java.util.jar.Attributes
+import kotlinx.android.synthetic.main.color_selector.view.*
+
 
 class ColorSelector  @JvmOverloads
 constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int = 0, defRes: Int = 0):
@@ -15,6 +17,35 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
     private var selectedColorIndex = 0
     init {
         orientation = HORIZONTAL
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        inflater.inflate(R.layout.color_selector, this)
+        colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
+
+        colorSelectorArrowLeft.setOnClickListener {
+            selectPreviousColor()
+        }
+
+        colorSelectorArrowRight.setOnClickListener {
+            selectNextColor()
+        }
+    }
+
+    private fun selectNextColor() {
+        if (selectedColorIndex == listOfColors.lastIndex) {
+            selectedColorIndex = 0
+        } else {
+            selectedColorIndex++
+        }
+        colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
+    }
+
+    private fun selectPreviousColor() {
+        if (selectedColorIndex == 0) {
+            selectedColorIndex = listOfColors.lastIndex
+        } else {
+            selectedColorIndex--
+        }
+        colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
     }
 
 }
