@@ -14,10 +14,11 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
 
     private val listOfColors = listOf<Int>(Color.BLUE, Color.RED, Color.GREEN)
     private var selectedColorIndex = 0
-    private var colorSelectListener: ColorSelectListener? = null
+    private var colorSelectListener: ((Int) -> Unit)? = null
+
     var selectedColorValue: Int = android.R.color.transparent
         set(value) {
-            var index = listOfColors.indexOf(color)
+            var index = listOfColors.indexOf(value)
             if(index == -1) {
                 colorEnabled.isChecked == false
                 index = 0
@@ -26,7 +27,7 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             }
             selectedColorIndex = index
             colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
-            field = value
+            field = index
         }
     init {
         orientation = HORIZONTAL
@@ -67,22 +68,19 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
         broadcastColor()
     }
 
-    interface ColorSelectListener {
-        fun onColorSelected(color: Int)
-    }
 
     private fun broadcastColor() {
-        if (colorEnabled.isChecked) {
-            colorSelectListener?.onColorSelected(listOfColors[selectedColorIndex])
-        }
-        else {
-            colorSelectListener?.onColorSelected(Color.TRANSPARENT)
-        }
+        val color: Int = if (colorEnabled.isChecked)
+            listOfColors[selectedColorIndex]
+        else
+            Color.TRANSPARENT
+
+        colorSelectListener?.let { function -> function(color) }
 
     }
 
-    fun setColorSelectListener(listener: ColorSelectListener) {
-        colorSelectListener = listener
+    fun setListener(color: (Int) -> Unit) {
+        colorSelectListener = color
     }
 
 
