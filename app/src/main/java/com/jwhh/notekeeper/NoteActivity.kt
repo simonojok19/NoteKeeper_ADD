@@ -52,6 +52,8 @@ class NoteActivity : AppCompatActivity(), ColorSelector.ColorSelectListener {
         val note = DataManager.notes[notePosition]
         textNoteTitle.setText(note.title)
         textNoteText.setText(note.text)
+        noteColor = note.color
+        color_selector.setSelectedColor(noteColor)
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(coursePosition)
@@ -115,6 +117,7 @@ class NoteActivity : AppCompatActivity(), ColorSelector.ColorSelectListener {
         val note = DataManager.notes[notePosition]
         note.title = textNoteTitle.text.toString()
         note.text = textNoteText.text.toString()
+        note.color = noteColor
         note.course = spinnerCourses.selectedItem as CourseInfo
     }
 

@@ -72,4 +72,16 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
         colorSelectListener = listener
     }
 
+    fun setSelectedColor(color: Int) {
+        var index = listOfColors.indexOf(color)
+        if(index == -1) {
+            colorEnabled.isChecked == false
+            index = 0
+        } else {
+            colorEnabled.isChecked = true
+        }
+        selectedColorIndex = index
+        colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
+    }
+
 }
