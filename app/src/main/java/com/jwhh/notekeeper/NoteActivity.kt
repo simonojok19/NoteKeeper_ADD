@@ -1,5 +1,6 @@
 package com.jwhh.notekeeper
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -9,10 +10,11 @@ import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class NoteActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity(), ColorSelector.ColorSelectListener {
     private var notePosition = POSITION_NOT_SET
     private var isNewNote = false
     private var isCancelling = false
+    private var noteColor: Int = Color.TRANSPARENT
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,9 @@ class NoteActivity : AppCompatActivity() {
             DataManager.notes.add(NoteInfo())
             notePosition = DataManager.notes.lastIndex
         }
+
+        color_selector.setColorSelectListener(this)
+
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -111,6 +116,10 @@ class NoteActivity : AppCompatActivity() {
         note.title = textNoteTitle.text.toString()
         note.text = textNoteText.text.toString()
         note.course = spinnerCourses.selectedItem as CourseInfo
+    }
+
+    override fun onColorSelected(color: Int) {
+        noteColor = color
     }
 }
 

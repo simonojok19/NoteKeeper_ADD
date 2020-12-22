@@ -2,7 +2,6 @@ package com.jwhh.notekeeper
 
 import android.content.Context
 import android.graphics.Color
-import android.support.annotation.StyleableRes
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
