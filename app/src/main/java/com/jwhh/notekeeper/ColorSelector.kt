@@ -38,7 +38,7 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             selectedColorIndex++
         }
         colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
-        broadcastColor(listOfColors[selectedColorIndex])
+        broadcastColor(if (colorEnabled.isChecked) listOfColors[selectedColorIndex] else Color.TRANSPARENT)
     }
 
     private fun selectPreviousColor() {
@@ -48,7 +48,7 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             selectedColorIndex--
         }
         colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
-        broadcastColor(listOfColors[selectedColorIndex])
+        broadcastColor(if (colorEnabled.isChecked) listOfColors[selectedColorIndex] else Color.TRANSPARENT)
     }
 
     interface ColorSelectListener {
