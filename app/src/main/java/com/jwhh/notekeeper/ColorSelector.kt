@@ -15,6 +15,7 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
 
     private val listOfColors = listOf<Int>(Color.BLUE, Color.RED, Color.GREEN)
     private var selectedColorIndex = 0
+    private var colorSelectListener: ColorSelectListener? = null
     init {
         orientation = HORIZONTAL
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -37,6 +38,7 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             selectedColorIndex++
         }
         colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
+        broadcastColor(listOfColors[selectedColorIndex])
     }
 
     private fun selectPreviousColor() {
@@ -46,6 +48,15 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             selectedColorIndex--
         }
         colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
+        broadcastColor(listOfColors[selectedColorIndex])
+    }
+
+    interface ColorSelectListener {
+        fun onColorSelected(color: Int)
+    }
+
+    private fun broadcastColor(color: Int) {
+        colorSelectListener?.onColorSelected(color)
     }
 
 }
