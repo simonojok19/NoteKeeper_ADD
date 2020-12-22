@@ -35,9 +35,9 @@ class CreateNewNoteTest {
         val fabViewInteraction = onView(withId(R.id.fab))
         fabViewInteraction.perform(click())
 
-        openActionBarOverflowOrOptionsMenu(
-                ApplicationProvider.getApplicationContext<Context>()
-        )
+//        openActionBarOverflowOrOptionsMenu(
+//                ApplicationProvider.getApplicationContext<Context>()
+//        )
 
         val spinnerInteraction = onView(withId(R.id.spinnerCourses));
         spinnerInteraction.perform(click())
