@@ -15,6 +15,19 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
     private val listOfColors = listOf<Int>(Color.BLUE, Color.RED, Color.GREEN)
     private var selectedColorIndex = 0
     private var colorSelectListener: ColorSelectListener? = null
+    var selectedColorValue: Int = android.R.color.transparent
+        set(value) {
+            var index = listOfColors.indexOf(color)
+            if(index == -1) {
+                colorEnabled.isChecked == false
+                index = 0
+            } else {
+                colorEnabled.isChecked = true
+            }
+            selectedColorIndex = index
+            colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
+            field = value
+        }
     init {
         orientation = HORIZONTAL
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -72,16 +85,5 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
         colorSelectListener = listener
     }
 
-    fun setSelectedColor(color: Int) {
-        var index = listOfColors.indexOf(color)
-        if(index == -1) {
-            colorEnabled.isChecked == false
-            index = 0
-        } else {
-            colorEnabled.isChecked = true
-        }
-        selectedColorIndex = index
-        colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
-    }
 
 }
