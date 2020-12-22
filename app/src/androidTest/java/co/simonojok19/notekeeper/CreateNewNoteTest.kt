@@ -1,5 +1,7 @@
 package co.simonojok19.notekeeper
 
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.ViewAction
@@ -32,6 +34,10 @@ class CreateNewNoteTest {
         // Act
         val fabViewInteraction = onView(withId(R.id.fab))
         fabViewInteraction.perform(click())
+
+        openActionBarOverflowOrOptionsMenu(
+                ApplicationProvider.getApplicationContext<Context>()
+        )
 
         val spinnerInteraction = onView(withId(R.id.spinnerCourses));
         spinnerInteraction.perform(click())
