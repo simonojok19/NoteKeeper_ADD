@@ -23,4 +23,9 @@ class ColorSelector: LinearLayout {
         orientation = HORIZONTAL
     }
 
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int, defStyleRes: Int)
+        :super(context, attributeSet, defStyleAttr, defStyleRes) {
+            orientation = HORIZONTAL
+        }
+
 }
