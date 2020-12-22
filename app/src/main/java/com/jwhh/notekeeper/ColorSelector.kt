@@ -29,6 +29,10 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
         colorSelectorArrowRight.setOnClickListener {
             selectNextColor()
         }
+
+        colorEnabled.setOnCheckedChangeListener {_, _ ->
+            broadcastColor()
+        }
     }
 
     private fun selectNextColor() {
@@ -38,7 +42,7 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             selectedColorIndex++
         }
         colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
-        broadcastColor(if (colorEnabled.isChecked) listOfColors[selectedColorIndex] else Color.TRANSPARENT)
+        broadcastColor()
     }
 
     private fun selectPreviousColor() {
@@ -48,15 +52,25 @@ constructor(context: Context, attributeSet: AttributeSet? = null, defStyle: Int 
             selectedColorIndex--
         }
         colorSelector.setBackgroundColor(listOfColors[selectedColorIndex])
-        broadcastColor(if (colorEnabled.isChecked) listOfColors[selectedColorIndex] else Color.TRANSPARENT)
+        broadcastColor()
     }
 
     interface ColorSelectListener {
         fun onColorSelected(color: Int)
     }
 
-    private fun broadcastColor(color: Int) {
-        colorSelectListener?.onColorSelected(color)
+    private fun broadcastColor() {
+        if (colorEnabled.isChecked) {
+            colorSelectListener?.onColorSelected(listOfColors[selectedColorIndex])
+        }
+        else {
+            colorSelectListener?.onColorSelected(Color.TRANSPARENT)
+        }
+
+    }
+
+    fun setColorSelectListener(listener: ColorSelectListener) {
+        colorSelectListener = listener
     }
 
 }
