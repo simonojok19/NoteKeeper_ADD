@@ -29,6 +29,6 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
+        list_items.adapter?.notifyDataSetChanged()
     }
 }
